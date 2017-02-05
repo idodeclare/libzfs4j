@@ -195,6 +195,17 @@ public class LibZFSTest extends TestCase {
         }
     }
 
+    // Keep testAllow though removed from https://github.com/kohsuke/libzfs4j
+    public void testAllow() {
+        ZFSFileSystem fs = zfs.create(dataSet, ZFSFileSystem.class);
+        ACLBuilder acl = new ACLBuilder();
+        acl.everyone().with(ZFSPermission.CREATE);
+        // this fails if the permission being allowed here isn't already allowed to me
+        fs.allow(acl);
+        // for reasons beyond me, I can't unallow permissions that I just set above
+        // fs.unallow(acl);
+    }
+
     public void testInheritProperty() {
         ZFSFileSystem o  = zfs.create(dataSet, ZFSFileSystem.class);
         ZFSFileSystem o2 = zfs.create(dataSet+"/child",ZFSFileSystem.class);

@@ -14,7 +14,7 @@
   <name>libzfs-java</name>
   <version>0.6-SNAPSHOT</version>
   <description>libzfs for Java</description>
-  <url>http://libzfs.kohsuke.org/</url>
+  <url>http://java.net/projects/zfs</url>
 
   <inceptionYear>2008</inceptionYear>
 

@@ -350,6 +350,8 @@ int zfs_snapshot(libzfs_handle_t lib, String fullNameWithAtSnapShot, boolean rec
         
 int zfs_rollback(zfs_handle_t handle1, zfs_handle_t handle2, boolean _3);
 int zfs_rename(zfs_handle_t handle, String name, boolean _3);
+// Keep zfs_send though removed from https://github.com/kohsuke/libzfs4j
+int zfs_send(zfs_handle_t handle, String _2, String _3, boolean _4, boolean _5, boolean _6, boolean _7, int _8);
 int zfs_promote(zfs_handle_t handle);
 
 //typedef struct sendflags {
@@ -417,6 +419,9 @@ int zfs_promote(zfs_handle_t handle);
 //
 //    extern int zfs_receive(libzfs_handle_t *, const char *, recvflags_t *,
 //        int, avl_tree_t *);
+
+// Keep zfs_receive though removed from https://github.com/kohsuke/libzfs4j
+int zfs_receive(libzfs_handle_t lib, String name, recvflags_t _3, int _4, avl_tree_t _5);
 
 /*
  * Miscellaneous functions.

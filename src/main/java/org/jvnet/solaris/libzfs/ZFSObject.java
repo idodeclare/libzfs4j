@@ -458,6 +458,29 @@ public abstract class ZFSObject implements Comparable<ZFSObject>, ZFSContainer {
     }
 
     /**
+     * Grants the specified set of permissions to this dataset.
+     * (Keep allow though removed from https://github.com/kohsuke/libzfs4j).
+     */
+    public void allow(ACLBuilder acl) {
+        for (PermissionBuilder b : acl.builders) {
+            if(LIBZFS.zfs_perm_set(handle,b.toNativeFormat(this))!=0)
+                throw new ZFSException(library);
+        }
+    }
+
+    /**
+     * Revokes the specified set of permissions to this dataset.
+     * (Keep unallow though removed from https://github.com/kohsuke/libzfs4j).
+     */
+    public void unallow(ACLBuilder acl) {
+        for (PermissionBuilder b : acl.builders) {
+            if(LIBZFS.zfs_perm_remove(handle,b.toNativeFormat(this))!=0)
+                throw new ZFSException(library);
+        }
+    }
+
+
+    /**
      * Returns {@link #getName() the name}.
      */
     @Override
